@@ -14,14 +14,16 @@ This tutorial is inspired and adapted from Jamin Wells, “How to Map Historic C
 ### Note: Material under this heading is taken directly from the Wells tutorial, editing is noted with bracketed ellipses and comments
 
 - Open QGIS. Start a new project. [JG: set the CRS to NAD83]
-- Create a new shapefile layer. This is the basic foundation of the map. Open the zipped 1800 shapefile you downloaded from NHGIS. You should see a map of all 427 counties from the 1800 U.S. census. Use the mouse to zoom in and out. Grab and drag the map around. Play around with the buttons on the top toolbar.
+- Open the zipped 1800 shapefile you downloaded from NHGIS. This is the basic foundation of the map. You should see a map of all 427 counties from the 1800 U.S. census. Use the mouse to zoom in and out. Grab and drag the map around. Play around with the buttons on the top toolbar.
 - Now it’s time to upload the census data. Create a new “delimited text file” layer. This, of course, is census database.
 - [JG: Use “Add a Layer” and choose “Add delimited text layer”] Add the census CSV file you downloaded from NHGIS.
 - Be sure the “file format” is set to “CSV (comma separated values)”
 - For “Geometry definition” select “No geometry (attribute only table)”
 - Click OK.
-- […] You should see the new layer in your “Layers Panel” on the right. Now we have to put the numbers into the map.
-  - Right click the shapefile. Click “Properties”
+- […] You should see the new layer in your “Layers Panel” on the right. 
+- 
+## Now we have to put the numbers into the map.
+  - Open the "Properties" screen for the shapefile (not the CSV file that you just imported).
   - Click “Joins”
   - Click the green “+” symbol to join the two layers together.
     - Set “Join layer” to the .csv file
@@ -29,19 +31,19 @@ This tutorial is inspired and adapted from Jamin Wells, “How to Map Historic C
     - Set “Target field” to “GISJOIN”
     - Press OK. This should put you back in the shapefile “Properties” dialogue box.
     - Click “Fields.” Scroll down. You should see all the [population] data for every [county] census [in 1800]. Smile – that’s pretty amazing!
-- Now it’s time to display some info on our map. In the “Properties” dialogue box of the shapefile. Click “Style.”
-  - Now it’s time to display some info on our map. In the “Properties” dialogue box of the shapefile. Click “Style.”
+## Display some info on our map. 
+  - In the “Properties” dialogue box of the shapefile layer, click “Style.”
   - Change the dropdown box on the top from “Single Symbol” to “Graduated”
   - Change “Column” to the 1800 data (my file reads: nhgis0001\_ts\_nominal\_county\_AOOAA1800) [your file may have a different column name, like "nhgis0002\_ds2\_1800\_county\_AAS001"]
   - Click the “Classify” button. You should see the box in the middle of the dialogue box populate with symbols, values, and legend entries.
   - Press “Apply” then “OK.” You’re looking at a population map. It probably doesn’t look too awe inspiring at the moment.
   - Go back to the “Style” dialogue box (right click shapefile, “Properties,” “Style.”
   - Play around. You can’t hurt much (and if you do, it’s easy enough to start over). I suggest starting with the “color ramp,” “precision,” “mode,” and “classes” buttons. Remember: every time you make a change you have to press “apply” to see how it changes your map. [JG: “Natural Breaks (Jenks)”]
-- Population is great but I want population density. Here’s how we get there 
-
-# Create a new column based on data in the newly merged file
+- Population is great but I want population density. Here’s how we get there:
+# Creating a population density map
+## Create a new column based on data in the newly merged file
 #### Note: This explanation is from Garrigus
-- Right click shapefile, “Properties,” “Fields”
+- Right click the shapefile, “Properties,” “Fields”
 - Click on the abacus button, which is the “Field Calculator” which puts you into the “Expressions” dialog box. You are now going to build an equation to show population density.
   - Under “output field name” type “Pop\_densit”.
   - For “output field type” chose “Decimal number (real)”
